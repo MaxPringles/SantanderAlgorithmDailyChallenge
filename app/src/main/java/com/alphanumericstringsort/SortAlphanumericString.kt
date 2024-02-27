@@ -2,32 +2,44 @@ package com.alphanumericstringsort
 
 class SortAlphanumericString {
     fun sortString(text: String): String {
-        var evenNumbers = ""
-        var oddNumbers = ""
-        var upperCase = ""
-        var lowerCase = ""
-        var otherCharacter = ""
+        val evenNumbers = arrayListOf<String>()
+        val oddNumbers = arrayListOf<String>()
+        val upperCase = arrayListOf<String>()
+        val lowerCase = arrayListOf<String>()
+        val otherCharacter = arrayListOf<String>()
 
         for (char in text) {
             when (char) {
-                '0','2','4','6','8' -> {
-                    evenNumbers += char
+                '0', '2', '4', '6', '8' -> {
+                    evenNumbers.add(char.toString())
                 }
-                '1','3','5','7','9' ->{
-                    oddNumbers += char
+
+                '1', '3', '5', '7', '9' -> {
+                    oddNumbers.add(char.toString())
                 }
+
                 in 'a'..'z' -> {
-                    lowerCase += char
+                    lowerCase.add(char.toString())
                 }
+
                 in 'A'..'Z' -> {
-                    upperCase += char
+                    upperCase.add(char.toString())
                 }
+
                 else -> {
-                    otherCharacter += char
+                    otherCharacter.add(char.toString())
                 }
             }
         }
+        lowerCase.sort()
+        upperCase.sort()
+        oddNumbers.sort()
+        evenNumbers.sort()
 
-        return "$lowerCase$upperCase$oddNumbers$evenNumbers$otherCharacter"
+        return lowerCase.joinToString(separator = "") +
+                upperCase.joinToString(separator = "") +
+                oddNumbers.joinToString(separator = "") +
+                evenNumbers.joinToString(separator = "") +
+                otherCharacter.joinToString(separator = "")
     }
 }

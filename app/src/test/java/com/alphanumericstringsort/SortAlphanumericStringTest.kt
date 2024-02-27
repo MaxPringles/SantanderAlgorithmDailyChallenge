@@ -9,10 +9,10 @@ class SortAlphanumericStringTest {
 
     @Test
     fun sortTests() {
-        assertEquals("holaMUNDO5780®", sortAlphanumericString.sortString("M8hU5®oN7lDa0O"))
-        assertEquals("abeCD4®", sortAlphanumericString.sortString("4a®CbDe"))
+        assertEquals("ahloDMNOU5708®", sortAlphanumericString.sortString("M8hU5®oN7lDa0O"))
+        assertEquals("beCD4á®", sortAlphanumericString.sortString("4á®CbDe"))
         assertEquals("bkpzALX37#", sortAlphanumericString.sortString("A3b#kL7pXz"))
-        assertEquals("qsexgbkRYZPFH13862#*", sortAlphanumericString.sortString("R8q#Ys6Z*2ePx1Fg3bHk"))
-        assertEquals("hptmqokDARLXZU59712#-", sortAlphanumericString.sortString("D5hA#pRt9mLq-X7o2ZkU1"))
+        assertEquals("begkqsxFHPRYZ13268#*", sortAlphanumericString.sortString("R8q#Ys6Z*2ePx1Fg3bHk"))
+        assertEquals("hkmopqtADLRUXZ15792#-", sortAlphanumericString.sortString("D5hA#pRt9mLq-X7o2ZkU1"))
     }
 }
