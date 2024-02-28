@@ -1,5 +1,6 @@
 package com.alphanumericstringsort
 
+import com.alphanumericstringsort.challengeone.SortAlphanumericString
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

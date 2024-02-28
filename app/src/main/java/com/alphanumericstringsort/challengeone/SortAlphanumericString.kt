@@ -1,4 +1,4 @@
-package com.alphanumericstringsort
+package com.alphanumericstringsort.challengeone
 
 class SortAlphanumericString {
     fun sortString(text: String): String {
