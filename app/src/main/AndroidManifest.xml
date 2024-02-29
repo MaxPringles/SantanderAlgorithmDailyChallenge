@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AlphanumericStringSort"
         tools:targetApi="31">
         <activity
-            android:name=".challengeone.SortAlphanumericString"
+            android:name=".challengethree.TicTacToe"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
