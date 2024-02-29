@@ -2,8 +2,6 @@ package com.alphanumericstringsort.challengethree
 
 class TicTacToe {
     private var moves = mutableListOf<String>()
-    private var arrayA = mutableListOf<String>()
-    private var arrayB = mutableListOf<String>()
     private var movesA = Array(3) { Array(3) { "" } }
     private var movesB = Array(3) { Array(3) { "" } }
 
@@ -21,18 +19,10 @@ class TicTacToe {
     private fun setMoves() {
         for (move in moves) {
             if (moves.indexOf(move) % 2 == 0) {
-                arrayA.add(move)
+                movesA[move.split(",")[0].toInt()][move.split(",")[1].toInt()] = "A"
             } else {
-                arrayB.add(move)
+                movesB[move.split(",")[0].toInt()][move.split(",")[1].toInt()] = "B"
             }
-        }
-
-        for (moveA in arrayA) {
-            movesA[moveA.split(",")[0].toInt()][moveA.split(",")[1].toInt()] = "A"
-        }
-
-        for (moveB in arrayB) {
-            movesB[moveB.split(",")[0].toInt()][moveB.split(",")[1].toInt()] = "B"
         }
     }
 
