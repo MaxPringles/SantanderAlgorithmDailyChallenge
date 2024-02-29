@@ -29,22 +29,32 @@ class TicTacToeTest {
 
     @Test
     fun horizontalWin() {
-        assertTrue(ticTacToe.horizontalWin(arrayOf(arrayOf("","",""),arrayOf("A","A","A"),arrayOf("","",""))))
+        assertTrue(ticTacToe.verticalOrHorizontalWin(arrayOf(arrayOf("","",""),arrayOf("A","A","A"),arrayOf("","",""))))
     }
 
     @Test
     fun verticalWin() {
-        assertTrue(ticTacToe.verticalWin(arrayOf(arrayOf("","A",""),arrayOf("","A",""),arrayOf("","A",""))))
+        assertTrue(ticTacToe.verticalOrHorizontalWin(arrayOf(arrayOf("","A",""),arrayOf("","A",""),arrayOf("","A",""))))
+    }
+
+    @Test
+    fun verticalorHorizontalWin() {
+        assertTrue(ticTacToe.verticalOrHorizontalWin(arrayOf(arrayOf("","A","A"),arrayOf("A","A",""),arrayOf("","A",""))))
     }
 
     @Test
     fun rightDiagonalWin() {
-        assertTrue(ticTacToe.rightDiagonalWin(arrayOf(arrayOf("A","",""),arrayOf("","A",""),arrayOf("","","A"))))
+        assertTrue(ticTacToe.diagonalWin(arrayOf(arrayOf("A","",""),arrayOf("","A",""),arrayOf("","","A"))))
     }
 
     @Test
     fun leftDiagonalWin() {
-        assertTrue(ticTacToe.leftDiagonalWin(arrayOf(arrayOf("","","A"),arrayOf("","A",""),arrayOf("A","",""))))
+        assertTrue(ticTacToe.diagonalWin(arrayOf(arrayOf("","","A"),arrayOf("","A",""),arrayOf("A","",""))))
+    }
+
+    @Test
+    fun diagonalWin() {
+        assertTrue(ticTacToe.diagonalWin(arrayOf(arrayOf("A","","A"),arrayOf("","A",""),arrayOf("A","",""))))
     }
 
     @Test

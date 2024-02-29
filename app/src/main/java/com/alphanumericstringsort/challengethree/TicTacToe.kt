@@ -8,7 +8,10 @@ class TicTacToe {
     private var movesB = Array(3) { Array(3) { "" } }
 
     fun startGame(input: String): String {
-        moves = input.replace("],[", " ").replace("[[", "").replace("]]", "").split(" ").toMutableList()
+        moves = input
+            .replace("[[", "")
+            .replace("]]", "")
+            .split("],[").toMutableList()
 
         setMoves()
 
@@ -16,25 +19,20 @@ class TicTacToe {
     }
 
     private fun setMoves() {
-        for (moveA in moves) {
-            if (moves.indexOf(moveA) % 2 == 0) {
-                arrayA.add(moveA)
+        for (move in moves) {
+            if (moves.indexOf(move) % 2 == 0) {
+                arrayA.add(move)
+            } else {
+                arrayB.add(move)
             }
         }
-        for (moveB in moves) {
-            if (moves.indexOf(moveB) % 2 != 0) {
-                arrayB.add(moveB)
-            }
-        }
+
         for (moveA in arrayA) {
-            val x = moveA.split(",")[0].toInt()
-            val y = moveA.split(",")[1].toInt()
-            movesA[x][y] = "A"
+            movesA[moveA.split(",")[0].toInt()][moveA.split(",")[1].toInt()] = "A"
         }
+
         for (moveB in arrayB) {
-            val x = moveB.split(",")[0].toInt()
-            val y = moveB.split(",")[1].toInt()
-            movesB[x][y] = "B"
+            movesB[moveB.split(",")[0].toInt()][moveB.split(",")[1].toInt()] = "B"
         }
     }
 
@@ -53,72 +51,46 @@ class TicTacToe {
     }
 
     fun isThisAWinner(moves: Array<Array<String>>): Boolean {
-        return if (horizontalWin(moves)) {
+        return if (verticalOrHorizontalWin(moves)) {
             true
-        } else if (verticalWin(moves)) {
-            true
-        } else if (leftDiagonalWin(moves)) {
-            true
-        } else rightDiagonalWin(moves)
+        } else diagonalWin(moves)
     }
 
-    fun horizontalWin(moves: Array<Array<String>>): Boolean {
-        var counter = 0
+    fun verticalOrHorizontalWin(moves: Array<Array<String>>): Boolean {
+        var counterHorizontal = 0
+        var counterVertical = 0
         var isWinner = false
         for(i in 0..2) {
             for (j in 0..2) {
                 if (moves[i][j] != "") {
-                    counter++
+                    counterHorizontal++
                 }
-            }
-            if (counter == 3) {
-                isWinner = true
-            }
-            counter = 0
-        }
-        return isWinner
-    }
-
-    fun verticalWin(moves: Array<Array<String>>): Boolean {
-        var counter = 0
-        var isWinner = false
-        for(i in 0..2) {
-            for (j in 0..2) {
                 if (moves[j][i] != "") {
-                    counter++
+                    counterVertical++
                 }
             }
-            if (counter == 3) {
+            if (counterHorizontal == 3 || counterVertical == 3) {
                 isWinner = true
             }
-            counter = 0
+            counterHorizontal = 0
+            counterVertical = 0
         }
         return isWinner
     }
 
-    fun rightDiagonalWin(moves: Array<Array<String>>): Boolean {
-        var counter = 0
+    fun diagonalWin(moves: Array<Array<String>>): Boolean {
+        var counterRight = 0
+        var counterLeft = 0
         var isWinner = false
         for(i in 0..2) {
             if (moves[i][i] != "") {
-                counter++
+                counterRight++
             }
-        }
-        if (counter == 3) {
-            isWinner = true
-        }
-        return isWinner
-    }
-
-    fun leftDiagonalWin(moves: Array<Array<String>>): Boolean {
-        var counter = 0
-        var isWinner = false
-        for(i in 0..2) {
             if (moves[i][2-i] != "") {
-                counter++
+                counterLeft++
             }
         }
-        if (counter == 3) {
+        if (counterRight == 3 || counterLeft == 3) {
             isWinner = true
         }
         return isWinner
